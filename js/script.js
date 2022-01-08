@@ -31,7 +31,8 @@ function getWeatherDataFromAPI() {
     } else {
         displayLoadingMessage();
         city = searchInput;
-        let apiURL = 'http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID='+apiKey;
+        //(https://cors-anywhere.herokuapp.com/) is added to the API URL to counter the mixed content error. Github page loads in https but the API request is made using http, so the content is blocked
+        let apiURL = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q='+city+'&APPID='+apiKey;
         
         //Fetch and process data from the API
         fetch(apiURL, {mode: 'cors'})
